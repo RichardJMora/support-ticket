@@ -24,6 +24,11 @@ Route::get('my_tickets', 'TicketsController@userTickets');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
 	Route::get('tickets', 'TicketsController@index');
 	Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
+	
+	//Routes Categories only Admin
+	Route::get('categories', 'CategoriesController@index');
+	Route::get('category/create', 'CategoriesController@create');
+	Route::post('category/create', 'CategoriesController@store');
 });
 
 Route::post('comment', 'CommentsController@postComment');
